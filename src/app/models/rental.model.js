@@ -5,7 +5,14 @@ module.exports = mongoose => {
         {
           title: String,
           description: String,
-          published: Boolean
+          price: Number,
+          size: Number,
+          rooms: Number,
+          bathrooms: Number,
+          petsAllowed: Boolean,
+          smokingAllowed: Boolean,
+          furnished: Boolean,
+          laundry: Boolean,
         },
         { timestamps: true }
       )

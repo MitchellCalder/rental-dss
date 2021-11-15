@@ -13,6 +13,14 @@ exports.create = (req, res) => {
     const rental = new Rental({
       title: req.body.title,
       description: req.body.description,
+      price: req.body.price,
+      size: req.body.size,
+      rooms: req.body.rooms,
+      bathrooms: req.body.bathrooms,
+      petsAllowed: req.body.petsAllowed ? req.body.petsAllowed : false,
+      smokingAllowed: req.body.smokingAllowed ? req.body.smokingAllowed : false,
+      furnished: req.body.furnished ? req.body.furnished : false,
+      laundry: req.body.laundry ? req.body.laundry : false,
       published: req.body.published ? req.body.published : false
     });
   
@@ -32,9 +40,40 @@ exports.create = (req, res) => {
 
 // Retrieve all Rentals from the database.
 exports.findAll = (req, res) => {
-    const title = req.query.title;
-    var condition = title ? { title: { $regex: new RegExp(title), $options: "i" } } : {};
-  
+    let minPrice = req.query.minPrice;
+    let maxPrice = req.query.maxPrice;
+    let minSize = req.query.minSize;
+    let maxSize = req.query.maxSize;
+    let minRooms = req.query.minRooms;
+    let maxRooms = req.query.maxRooms;
+    let minBathrooms = req.query.minBathrooms;
+    let maxBathrooms = req.query.maxBathrooms;
+    let petsAllowed = req.query.petsAllowed;
+    let smokingAllowed = req.query.smokingAllowed;
+    let furnished = req.query.furnished;
+    let laundry = req.query.laundry;
+    
+    let query = req.query;
+    console.log(query);
+
+    var condition = { $and: [ 
+      { price: { $gte:minPrice } },
+      { price: { $lte:maxPrice } },
+      { size: { $gte:minSize } },
+      { size: { $lte:maxSize } },
+      { rooms: { $gte:minRooms } },
+      { rooms: { $lte:maxRooms } },
+      { bathrooms: { $gte:minBathrooms } },
+      { bathrooms: { $lte:maxBathrooms } }
+    ] };
+
+    if (petsAllowed === 'true') condition.$and.push({petsAllowed: true});
+    if (smokingAllowed === 'true') condition.$and.push({smokingAllowed: true});
+    if (furnished === 'true') condition.$and.push({furnished: true});
+    if (laundry === 'true') condition.$and.push({laundry: true});
+
+    console.log(condition);
+    console.log(condition.$and);
     Rental.find(condition)
       .then(data => {
         res.send(data);

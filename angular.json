@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "rental-dss"
+    }
+  },
+  "defaultProject": "rental-dss",
+  "cli": {
+    "analytics": "108de2be-cba8-436c-adf2-71d5a18f2919"
+  }
 }

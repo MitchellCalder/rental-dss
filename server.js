@@ -15,13 +15,13 @@ app.get("/", (req, res) => {
     res.json({ message: "Welcome to the rental decision support system."})
 });
 
-require("./app/routes/rental.routes")(app);
+require("./src/app/routes/rental.routes")(app);
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
 
-const db = require("./app/models");
+const db = require("./src/app/models");
 db.mongoose
   .connect(db.url, {
     useNewUrlParser: true,
