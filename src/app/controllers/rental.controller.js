@@ -42,7 +42,7 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
 
     let array = [];
-    let sortBy = [];
+    let sortBy = {};
 
     let minPrice = req.query.minPrice;
     let maxPrice = req.query.maxPrice;
@@ -105,13 +105,14 @@ exports.findAll = (req, res) => {
 
     array.forEach(a => {
       let name = String(a.name);
-      sortBy.push({ name: -1 });
+      if (name == "petsAllowed" || name == "smokingAllowed" || name == "furnished" || name == "laundry") sortBy[name] = -1;
+      else sortBy[name] = 1;
     });
-    
 
-    // console.log(condition);
-    // console.log(condition.$and);
-    Rental.find(condition)
+    console.log(sortBy);
+
+    
+    Rental.find(condition).sort(sortBy)
       .then(data => {
         res.send(data);
       })
@@ -121,7 +122,7 @@ exports.findAll = (req, res) => {
             err.message || "Some error occurred while retrieving rentals."
         });
       });
-  };
+  }
 
 // Find a single Rental with an id
 exports.findOne = (req, res) => {
