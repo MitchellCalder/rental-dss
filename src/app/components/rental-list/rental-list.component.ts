@@ -1,15 +1,18 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
 import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
   selector: 'app-rental-list',
   templateUrl: './rental-list.component.html',
   styleUrls: ['./rental-list.component.css'],
-  providers: [RentalService]
+  providers: [RentalService],
 })
 export class RentalListComponent implements OnInit {
   @Input() groupFilters: Object;
 	@Input() searchByKeyword: string;
+  @Input()
+color: ThemePalette;
 	users: any[] = [];
 	filteredUsers: any[] = [];
  
@@ -30,13 +33,24 @@ export class RentalListComponent implements OnInit {
   furnished = false;
   laundry = false;
 
+  preferencePrice = null;
+  preferenceSize = null;
+  preferenceRooms = null;
+  preferenceBathrooms = null;
+  preferencePets = null;
+  preferenceSmoking = null;
+  preferenceFurnished = null;
+  preferenceLaundry = null;
+
   constructor(private rentalService: RentalService, private ref: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.retrieveRentals();
   }
 
-  
+  ngAfterViewInit(): void {
+    this.searchByFilters();
+  }
 
   retrieveRentals(): void {
     this.rentalService.getAll()
@@ -98,7 +112,16 @@ export class RentalListComponent implements OnInit {
       this.petsAllowed, 
       this.smokingAllowed, 
       this.furnished, 
-      this.laundry)
+      this.laundry,
+      this.preferencePrice,
+      this.preferenceSize,
+      this.preferenceRooms,
+      this.preferenceBathrooms,
+      this.preferencePets,
+      this.preferenceSmoking,
+      this.preferenceFurnished,
+      this.preferenceLaundry
+      )
       .subscribe(
         data => {
           this.rentals = data;

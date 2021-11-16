@@ -1,0 +1,85 @@
+
+
+section {
+    display: table;
+  }
+  
+  .example-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 120px;
+  }
+  
+  .example-button-row {
+    display: table-cell;
+    width: 490px;
+  }
+  
+  .example-button-row .mat-button-base {
+    margin: 8px 8px 8px 0;
+  }
+  
+  .example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }
+
+  :host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  input[type="number"] {
+    margin: 3px auto;
+    margin-right: 10px;
+  }
+
+  input[type="checkbox"] {
+    
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .col-md-8 {
+    padding: 10px;
+    display: inline-block;
+    float: left;
+  }
+  .col-md-6 {
+      display: inline-block;
+      float: center;
+      margin-right: 10px;
+  }
+  .col-md-7 {
+    display: inline-block;
+    float: right;
+  }
+
+  .mat-list-item{
+    max-height: 30px;
+    max-width: 250px;
+  }
+   :host /deep/ .mat-list-item-content {
+    padding: 0!important;
+  }
+
+  ::ng-deep .mat-list .mat-list-item .mat-line{
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    border: 1px;
+    border-color: black;
+}
+
+
+
+
+  

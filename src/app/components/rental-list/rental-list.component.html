@@ -1,120 +1,208 @@
 <div class="list row">
-    <div class="col-md-8">
+  <div class="col-md-8">
+    <h3>Requirements</h3>
       <div class="input-group mb-3">
-        
-        <input
-          type="number"
-          class="form-control"
-          placeholder="Minimum price"
-          [(ngModel)]="minPrice"
-        />
-        <input
-          type="number"
-          class="form-control"
-          placeholder="Maximum price"
-          [(ngModel)]="maxPrice"
-        />
-        <input
-          type="number"
-          class="form-control"
-          placeholder="Minimum size"
-          [(ngModel)]="minSize"
-        />
-        <input
-          type="number"
-          class="form-control"
-          placeholder="Maximum size"
-          [(ngModel)]="maxSize"
-        />
-        <input
-          type="number"
-          class="form-control"
-          placeholder="Minimum rooms"
-          [(ngModel)]="minRooms"
-        />
-        <input
-          type="number"
-          class="form-control"
-          placeholder="Maximum rooms"
-          [(ngModel)]="maxRooms"
-        />
-        <input
-          type="number"
-          class="form-control"
-          placeholder="Minimum bathrooms"
-          [(ngModel)]="minBathrooms"
-        />
-        <input
-          type="number"
-          class="form-control"
-          placeholder="Maximum bathrooms"
-          [(ngModel)]="maxBathrooms"
-        />
-        <label for="check"> Pets Allowed
-        <input 
-          value="{{petsAllowed}}"
-          type="checkbox"
-          required
-          [(ngModel)]="petsAllowed"
-          checked="petsAllowed">
-        </label>
-        <label for="check"> Smoking Allowed
-        <input 
-          value="{{smokingAllowed}}" 
-          type="checkbox" 
-          required
-          [(ngModel)]="smokingAllowed"
-          checked="smokingAllowed">
-        </label>
-        <label for="check"> Furnished
-        <input 
-          value="{{furnished}}" 
-          type="checkbox" 
-          required
-          [(ngModel)]="furnished"
-          checked="furnished">
-        </label>
-        <label for="check"> Laundry
-        <input 
-          value="{{laundry}}" 
-          type="checkbox"
-          required
-          [(ngModel)]="laundry"
-          checked="laundry">
-        </label>
+        <div>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Minimum Price"
+            [(ngModel)]="minPrice"
+          />
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Price Priority"
+            [(ngModel)]="preferencePrice"
+          />
+        </div>
 
-        <div class="input-group-append">
-          <button
-            class="btn btn-outline-secondary"
-            type="button"
-            (click)="searchTitle()"
-          >
-            Search By Title
-          </button>
+        <div>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Maximum Price"
+            [(ngModel)]="maxPrice"
+          />
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Size Priority"
+            [(ngModel)]="preferenceSize"
+          />
         </div>
-        <div class="input-group-append">
-          <button
-            class="btn btn-outline-secondary"
-            type="button"
-            (click)="searchByFilters()"
-          >
-            Search By Filters
-          </button>
+        <div>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Minimum Size"
+            [(ngModel)]="minSize"
+          />
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Rooms Priority"
+            [(ngModel)]="preferenceRooms"
+          />
         </div>
-        <!-- <div class="input-group-append">
-          <button
-            class="btn btn-outline-secondary"
-            type="button"
-            (click)="searchTitle()"
-          >
-            Search
-          </button>
-        </div> -->
+        
+        <div>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Maximum Size"
+            [(ngModel)]="maxSize"
+          />
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Bathrooms Priority"
+            [(ngModel)]="preferenceBathrooms"
+          />
+        </div>
+
+        <div>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Minimum Rooms"
+            [(ngModel)]="minRooms"
+          />
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Pets Allowed Priority"
+            [(ngModel)]="preferencePets"
+          />
+        </div>
+
+        <div>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Maximum Rooms"
+            [(ngModel)]="maxRooms"
+          />
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Smoking Priority"
+            [(ngModel)]="preferenceSmoking"
+          />
+        </div>
+
+        <div>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Minimum Bathrooms"
+            [(ngModel)]="minBathrooms"
+          />
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Bathrooms Priority"
+            [(ngModel)]="preferenceFurnished"
+          />
+        </div>
+
+        <div>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Maximum Bathrooms"
+            [(ngModel)]="maxBathrooms"
+          />
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Laundry Priority"
+            [(ngModel)]="preferenceLaundry"
+          />
+        </div>
+
+        <div>
+          <label for="check">
+            <input 
+              value="{{petsAllowed}}"
+              type="checkbox"
+              required
+              [(ngModel)]="petsAllowed"
+              checked="petsAllowed">
+              Pets Allowed
+          </label>
+        </div>
+
+        <div>
+          <label for="check">
+            <input 
+              value="{{smokingAllowed}}" 
+              type="checkbox" 
+              required
+              [(ngModel)]="smokingAllowed"
+              checked="smokingAllowed">
+              Smoking Allowed
+          </label>
+        </div>
+
+        <div>
+          <label for="check">
+            <input 
+              value="{{furnished}}" 
+              type="checkbox" 
+              required
+              [(ngModel)]="furnished"
+              checked="furnished">
+              Furnished
+          </label>
+        </div>
+
+        <div>
+          <label for="check">
+            <input 
+              value="{{laundry}}" 
+              type="checkbox"
+              required
+              [(ngModel)]="laundry"
+              checked="laundry">
+              Laundry
+          </label>
+        </div>
       </div>
-    </div>
-    <div class="col-md-6">
-      <h4>Rentals List</h4>
-      <ul class="list-group">
+
+  <div class="example-button-row">
+    <button
+      mat-raised-button color="primary"
+      class="btn btn-outline-secondary"
+      type="button"
+      (click)="searchByFilters()">Search
+    </button>
+
+    <button
+          mat-raised-button color="secondary"
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="removeAllRentals()">Remove All
+        </button>
+  </div>
+
+  <div></div>
+  
+  </div>
+  <div class="col-md-6">
+    <h4>Rentals List</h4>
+    <mat-list role="list" class="list-group">
+      <mat-list-item role="listitem"
+        class="list-group-item"
+        *ngFor="let rental of rentals; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveRental(rental, i)"
+      >
+        {{ rental.title }}
+      </mat-list-item>
+    </mat-list>
+
+      <!-- <ul class="list-group">
         <li
           class="list-group-item"
           *ngFor="let rental of rentals; let i = index"
@@ -123,15 +211,24 @@
         >
           {{ rental.title }}
         </li>
-      </ul>
+      </ul> -->
   
-      <button class="m-3 btn btn-sm btn-danger" (click)="removeAllRentals()">
-        Remove All
-      </button>
+    <div class="example-button-row">
+        <!-- <button
+          mat-raised-button color="secondary"
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="removeAllRentals()">Remove All
+        </button> -->
     </div>
-    <div class="col-md-6">
+      <!-- <button class="m-3 btn btn-sm btn-danger" (click)="removeAllRentals()">
+        Remove All
+      </button> -->
+  </div>
+
+    <div class="col-md-7">
+      <h3>Rental Details</h3>
       <div *ngIf="currentRental">
-        <h4>Rental</h4>
         <div>
           <label><strong>Title:</strong></label> {{ currentRental.title }}
         </div>
@@ -182,5 +279,5 @@
         <p>Please click on a Rental...</p>
       </div>
     </div>
-  </div>
+  <!-- </div> -->
   

@@ -40,21 +40,52 @@ exports.create = (req, res) => {
 
 // Retrieve all Rentals from the database.
 exports.findAll = (req, res) => {
+
+    let array = [];
+    let sortBy = [];
+
     let minPrice = req.query.minPrice;
     let maxPrice = req.query.maxPrice;
+
     let minSize = req.query.minSize;
     let maxSize = req.query.maxSize;
+
     let minRooms = req.query.minRooms;
     let maxRooms = req.query.maxRooms;
+
     let minBathrooms = req.query.minBathrooms;
     let maxBathrooms = req.query.maxBathrooms;
+
     let petsAllowed = req.query.petsAllowed;
     let smokingAllowed = req.query.smokingAllowed;
     let furnished = req.query.furnished;
     let laundry = req.query.laundry;
+
+    let preferencePrice = req.query.preferencePrice;
+    let preferenceSize = req.query.preferenceSize;
+    let preferenceRooms = req.query.preferenceRooms;
+    let preferenceBathrooms = req.query.preferenceBathrooms;
+    let preferencePets = req.query.preferencePets;
+    let preferenceSmoking = req.query.preferenceSmoking;
+    let preferenceFurnished = req.query.preferenceFurnished;
+    let preferenceLaundry = req.query.preferenceLaundry;
+
+    if (preferencePrice != -1 ) array.push({ name: "price", priority: preferencePrice });
+    if (preferenceSize != -1 ) array.push({ name: "size", priority: preferenceSize });
+    if (preferenceRooms != -1 ) array.push({ name: "rooms", priority: preferenceRooms });
+    if (preferenceBathrooms != -1 ) array.push({ name: "bathrooms", priority: preferenceBathrooms });
+    if (preferencePets != -1 ) array.push({ name: "petsAllowed", priority: preferencePets });
+    if (preferenceSmoking != -1 ) array.push({ name: "smokingAllowed", priority: preferenceSmoking });
+    if (preferenceFurnished != -1 ) array.push({ name: "furnished", priority: preferenceFurnished });
+    if (preferenceLaundry != -1 ) array.push({ name: "laundry", priority: preferenceLaundry });
     
     let query = req.query;
     console.log(query);
+    console.log(array);
+    array.sort(function(a, b) {
+        return parseFloat(a.priority) - parseFloat(b.priority);
+      });
+    console.log(array);
 
     var condition = { $and: [ 
       { price: { $gte:minPrice } },
@@ -72,8 +103,14 @@ exports.findAll = (req, res) => {
     if (furnished === 'true') condition.$and.push({furnished: true});
     if (laundry === 'true') condition.$and.push({laundry: true});
 
-    console.log(condition);
-    console.log(condition.$and);
+    array.forEach(a => {
+      let name = String(a.name);
+      sortBy.push({ name: -1 });
+    });
+    
+
+    // console.log(condition);
+    // console.log(condition.$and);
     Rental.find(condition)
       .then(data => {
         res.send(data);

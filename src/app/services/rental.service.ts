@@ -41,7 +41,11 @@ export class RentalService {
     return this.http.get(`${baseUrl}?title=${title}`);
   }
 
-  findByFilters(minPrice, maxPrice, minSize, maxSize, minRooms, maxRooms, minBathrooms, maxBathrooms, petsAllowed, smokingAllowed, furnished, laundry): Observable<any> {
+  findByFilters(minPrice, maxPrice, minSize, maxSize,
+                   minRooms, maxRooms, minBathrooms, maxBathrooms,
+                   petsAllowed, smokingAllowed, furnished, laundry,
+                   preferencePrice, preferenceSize, preferenceRooms, preferenceBathrooms,
+                   preferencePets, preferenceSmoking, preferenceFurnished, preferenceLaundry): Observable<any> {
 
     var query = ``;
     minPrice = minPrice != null ? minPrice : 0;
@@ -52,6 +56,25 @@ export class RentalService {
     maxRooms = maxRooms != null ? maxRooms : Number.MAX_SAFE_INTEGER;
     minBathrooms = minBathrooms != null ? minBathrooms : 0;
     maxBathrooms = maxBathrooms != null ? maxBathrooms : Number.MAX_SAFE_INTEGER;
+
+    // var array = [];
+
+
+    // preferencePrice != null ? array.push({ name: "price", priority: preferencePrice }) : null;
+    // preferenceSize != null ? array.push({ name: "size", priority: preferenceSize }) : null;
+    // preferenceRooms != null ? array.push({ name: "rooms", priority: preferenceRooms }) : null;
+    // preferenceBathrooms != null ? array.push({ name: "bathrooms", priority: preferenceBathrooms }) : null;
+    // preferencePets != null ? array.push({ name: "pets", priority: preferencePets }) : null;
+    // preferenceSmoking != null ? array.push({ name: "smoking", priority: preferenceSmoking }) : null;
+    // preferenceFurnished != null ? array.push({ name: "furnished", priority: preferenceFurnished }) : null;
+    // preferenceLaundry != null ? array.push({ name: "laundry", priority: preferenceLaundry }) : null;
+
+    // console.log(array)
+    // // array.forEach(a => console.log(a.priority));
+    // array.sort(function(a, b) {
+    //   return parseFloat(a.priority) - parseFloat(b.priority);
+    // });
+    // console.log(array)
 
     query += `?minPrice=${minPrice}
 &maxPrice=${maxPrice}
@@ -65,6 +88,27 @@ export class RentalService {
 &smokingAllowed=${smokingAllowed}
 &furnished=${furnished}
 &laundry=${laundry}`;
+
+var indifferent = -1;
+
+  if (preferencePrice != null) query+=`&preferencePrice=${preferencePrice}`;
+  else query+=`&preferencePrice=${indifferent}`;
+  if (preferenceSize != null) query+=`&preferenceSize=${preferenceSize}`;
+  else query+=`&preferenceSize=${indifferent}`;
+  if (preferenceRooms != null) query+=`&preferenceRooms=${preferenceRooms}`;
+  else query+=`&preferenceRooms=${indifferent}`;
+  if (preferenceBathrooms != null) query+=`&preferenceBathrooms=${preferenceBathrooms}`;
+  else query+=`&preferenceBathrooms=${indifferent}`;
+  if (preferencePets != null) query+=`&preferencePets=${preferencePets}`;
+  else query+=`&preferencePets=${indifferent}`;
+  if (preferenceSmoking != null) query+=`&preferenceSmoking=${preferenceSmoking}`;
+  else query+=`&preferenceSmoking=${indifferent}`;
+  if (preferenceFurnished != null) query+=`&preferenceFurnished=${preferenceFurnished}`;
+  else query+=`&preferenceFurnished=${indifferent}`;
+  if (preferenceLaundry != null) query+=`&preferenceLaundry=${preferenceLaundry}`;
+  else query+=`&preferenceLaundry=${indifferent}`;
+  
+  // array.forEach(a => )
     return this.http.get(`${baseUrl}${query}`);
   }
 
