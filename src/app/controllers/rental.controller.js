@@ -21,7 +21,8 @@ exports.create = (req, res) => {
       smokingAllowed: req.body.smokingAllowed ? req.body.smokingAllowed : false,
       furnished: req.body.furnished ? req.body.furnished : false,
       laundry: req.body.laundry ? req.body.laundry : false,
-      published: req.body.published ? req.body.published : false
+      published: req.body.published ? req.body.published : false,
+      image: req.body.image
     });
   
     // Save Rental in the database

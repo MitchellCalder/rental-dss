@@ -1,7 +1,7 @@
 <div class="list row">
   <div class="col-md-8">
-    <h3>Requirements</h3>
-      <div class="input-group mb-3">
+    <div class="input-group mb-3">
+        <h3>Requirements</h3>
         <div>
           <input
             type="number"
@@ -168,27 +168,24 @@
               Laundry
           </label>
         </div>
-      </div>
-
-  <div class="example-button-row">
-    <button
-      mat-raised-button color="primary"
-      class="btn btn-outline-secondary"
-      type="button"
-      (click)="searchByFilters()">Search
-    </button>
-
-    <button
-          mat-raised-button color="secondary"
+        
+        <div class="example-button-row">
+          <button
+          mat-raised-button color="primary"
           class="btn btn-outline-secondary"
           type="button"
-          (click)="removeAllRentals()">Remove All
+          (click)="searchByFilters()">Search
         </button>
+        
+        <button
+        mat-raised-button color="secondary"
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="removeAllRentals()">Remove All
+      </button>
+    </div>
   </div>
 
-  <div></div>
-  
-  </div>
   <div class="col-md-6">
     <h4>Rentals List</h4>
     <mat-list role="list" class="list-group">
@@ -201,48 +198,31 @@
         {{ rental.title }}
       </mat-list-item>
     </mat-list>
-
-      <!-- <ul class="list-group">
-        <li
-          class="list-group-item"
-          *ngFor="let rental of rentals; let i = index"
-          [class.active]="i == currentIndex"
-          (click)="setActiveRental(rental, i)"
-        >
-          {{ rental.title }}
-        </li>
-      </ul> -->
   
     <div class="example-button-row">
-        <!-- <button
-          mat-raised-button color="secondary"
-          class="btn btn-outline-secondary"
-          type="button"
-          (click)="removeAllRentals()">Remove All
-        </button> -->
-    </div>
-      <!-- <button class="m-3 btn btn-sm btn-danger" (click)="removeAllRentals()">
-        Remove All
-      </button> -->
-  </div>
 
-    <div class="col-md-7">
+    </div>
+
+  </div>
+  
+  <div class="col-md-7">
       <h3>Rental Details</h3>
       <div *ngIf="currentRental">
-        <div>
-          <label><strong>Title:</strong></label> {{ currentRental.title }}
+        <label><strong>Title:</strong></label> 
+        <div class="text">
+          {{ currentRental.title }}
         </div>
-        <div>
-          <label><strong>Description:</strong></label>
+        <label><strong>Description:</strong></label>
+        <div class="text"> 
           {{ currentRental.description }}
         </div>
         <div>
           <label><strong>Price:</strong></label>
-          {{ currentRental.price }}
+          ${{ currentRental.price }}
         </div>
         <div>
           <label><strong>Size:</strong></label>
-          {{ currentRental.size }}
+          {{ currentRental.size }} ft<sup>2</sup>
         </div>
         <div>
           <label><strong>Rooms:</strong></label>
@@ -268,16 +248,23 @@
           <label><strong>Furnished:</strong></label>
           {{ currentRental.furnished }}
         </div>
+
+        <div>
+          <img src="{{ currentRental.image }}" width="25%" height="25%" >
+          
+        </div>
   
         <a class="badge badge-warning" routerLink="/rentals/{{ currentRental.id }}">
           Edit
         </a>
       </div>
+      
   
       <div *ngIf="!currentRental">
         <br />
         <p>Please click on a Rental...</p>
       </div>
     </div>
-  <!-- </div> -->
+  </div>
+  
   

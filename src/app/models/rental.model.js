@@ -13,6 +13,7 @@ module.exports = mongoose => {
           smokingAllowed: Boolean,
           furnished: Boolean,
           laundry: Boolean,
+          image: String
         },
         { timestamps: true }
       )

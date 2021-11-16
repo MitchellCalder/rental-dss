@@ -73,6 +73,18 @@
           />
         </div>
 
+        <label for="image">Image URL</label>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="image"
+            required
+            [(ngModel)]="rental.image"
+            name="image"
+          />
+        </div>
+
         <div class="form-group">
           <input 
           value="{{rental.petsAllowed}}"

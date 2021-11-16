@@ -18,7 +18,8 @@ export class AddRentalComponent implements OnInit {
     petsAllowed: false,
     smokingAllowed: false,
     furnished: false,
-    laundry: false
+    laundry: false,
+    image: ''
   };
   submitted = false;
 
@@ -38,7 +39,8 @@ export class AddRentalComponent implements OnInit {
       petsAllowed: this.rental.petsAllowed,
       smokingAllowed: this.rental.smokingAllowed,
       furnished: this.rental.furnished,
-      laundry: this.rental.laundry
+      laundry: this.rental.laundry,
+      image: this.rental.image
     };
 
     this.rentalService.create(data)
@@ -64,7 +66,8 @@ export class AddRentalComponent implements OnInit {
       petsAllowed: false,
       smokingAllowed: false,
       furnished: false,
-      laundry: false
+      laundry: false,
+      image: ''
     };
   }
 

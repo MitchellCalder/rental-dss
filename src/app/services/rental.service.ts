@@ -57,25 +57,6 @@ export class RentalService {
     minBathrooms = minBathrooms != null ? minBathrooms : 0;
     maxBathrooms = maxBathrooms != null ? maxBathrooms : Number.MAX_SAFE_INTEGER;
 
-    // var array = [];
-
-
-    // preferencePrice != null ? array.push({ name: "price", priority: preferencePrice }) : null;
-    // preferenceSize != null ? array.push({ name: "size", priority: preferenceSize }) : null;
-    // preferenceRooms != null ? array.push({ name: "rooms", priority: preferenceRooms }) : null;
-    // preferenceBathrooms != null ? array.push({ name: "bathrooms", priority: preferenceBathrooms }) : null;
-    // preferencePets != null ? array.push({ name: "pets", priority: preferencePets }) : null;
-    // preferenceSmoking != null ? array.push({ name: "smoking", priority: preferenceSmoking }) : null;
-    // preferenceFurnished != null ? array.push({ name: "furnished", priority: preferenceFurnished }) : null;
-    // preferenceLaundry != null ? array.push({ name: "laundry", priority: preferenceLaundry }) : null;
-
-    // console.log(array)
-    // // array.forEach(a => console.log(a.priority));
-    // array.sort(function(a, b) {
-    //   return parseFloat(a.priority) - parseFloat(b.priority);
-    // });
-    // console.log(array)
-
     query += `?minPrice=${minPrice}
 &maxPrice=${maxPrice}
 &minSize=${minSize}
@@ -108,7 +89,6 @@ var indifferent = -1;
   if (preferenceLaundry != null) query+=`&preferenceLaundry=${preferenceLaundry}`;
   else query+=`&preferenceLaundry=${indifferent}`;
   
-  // array.forEach(a => )
     return this.http.get(`${baseUrl}${query}`);
   }
 

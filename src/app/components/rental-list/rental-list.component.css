@@ -51,33 +51,34 @@ section {
 
   .col-md-8 {
     padding: 10px;
-    display: inline-block;
-    float: left;
-  }
-  .col-md-6 {
-      display: inline-block;
-      float: center;
-      margin-right: 10px;
-  }
-  .col-md-7 {
-    display: inline-block;
-    float: right;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    /* float: left; */
   }
 
   .mat-list-item{
     max-height: 30px;
-    max-width: 250px;
   }
    :host /deep/ .mat-list-item-content {
-    padding: 0!important;
+    padding-left: 0!important;
   }
 
   ::ng-deep .mat-list .mat-list-item .mat-line{
     word-wrap: break-word;
     white-space: pre-wrap;
-    border: 1px;
     border-color: black;
-}
+  }
+
+  .text {
+    max-width: 250px;
+  }
+
+  img {
+    padding-top: 5px;
+    width:100%;
+    max-width:250px
+  }
 
 
 

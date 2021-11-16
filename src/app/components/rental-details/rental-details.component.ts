@@ -12,12 +12,14 @@ export class RentalDetailsComponent implements OnInit {
 
   currentRental = null;
   message = '';
+  image = "";
 
   constructor(
     private rentalService: RentalService,
     private route: ActivatedRoute,
     private router: Router) { }
 
+    
   ngOnInit(): void {
     this.message = '';
     this.getRental(this.route.snapshot.paramMap.get('id'));
@@ -33,6 +35,9 @@ export class RentalDetailsComponent implements OnInit {
         error => {
           console.log(error);
         });
+
+        // if (localStorage.getItem('logo') != undefined) 
+        // this.currentRental.image = "https://images.craigslist.org/00x0x_hVRqviA66v3z_07y05I_600x450.jpg";
   }
 
   updatePublished(status): void {
