@@ -1,3 +1,3 @@
 module.exports = {
-    url: "mongodb://localhost:27017/db"
+    url: "mongodb+srv://a:a@cluster0.huoot.mongodb.net/test"
   };

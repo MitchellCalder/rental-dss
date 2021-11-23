@@ -32,6 +32,7 @@ color: ThemePalette;
   smokingAllowed = false;
   furnished = false;
   laundry = false;
+  address = ''
 
   preferencePrice = null;
   preferenceSize = null;
@@ -41,6 +42,8 @@ color: ThemePalette;
   preferenceSmoking = null;
   preferenceFurnished = null;
   preferenceLaundry = null;
+
+  value
 
   constructor(private rentalService: RentalService, private ref: ChangeDetectorRef) { }
 
@@ -125,6 +128,7 @@ color: ThemePalette;
       .subscribe(
         data => {
           this.rentals = data;
+          this.rentals.value = this.rentals.address + ', $' + this.rentals.price  + ', ' + this.rentals.size; 
           console.log(data);
         },
         error => {

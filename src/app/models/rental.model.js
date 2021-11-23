@@ -4,18 +4,22 @@ module.exports = mongoose => {
       mongoose.Schema(
         {
           title: String,
-          description: String,
+          address: String,
+          city: String,
+          state: String,
+          postal_code: String,
           price: Number,
           size: Number,
-          rooms: Number,
+          bedrooms: Number,
           bathrooms: Number,
           petsAllowed: Boolean,
           smokingAllowed: Boolean,
           furnished: Boolean,
           laundry: Boolean,
-          image: String
-        },
-        { timestamps: true }
+          image: String,
+          url: String
+        }
+        // ,{ timestamps: true }
       )
     );
   

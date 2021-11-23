@@ -73,7 +73,7 @@ exports.findAll = (req, res) => {
 
     if (preferencePrice != -1 ) array.push({ name: "price", priority: preferencePrice });
     if (preferenceSize != -1 ) array.push({ name: "size", priority: preferenceSize });
-    if (preferenceRooms != -1 ) array.push({ name: "rooms", priority: preferenceRooms });
+    if (preferenceRooms != -1 ) array.push({ name: "bedrooms", priority: preferenceRooms });
     if (preferenceBathrooms != -1 ) array.push({ name: "bathrooms", priority: preferenceBathrooms });
     if (preferencePets != -1 ) array.push({ name: "petsAllowed", priority: preferencePets });
     if (preferenceSmoking != -1 ) array.push({ name: "smokingAllowed", priority: preferenceSmoking });
@@ -81,12 +81,12 @@ exports.findAll = (req, res) => {
     if (preferenceLaundry != -1 ) array.push({ name: "laundry", priority: preferenceLaundry });
     
     let query = req.query;
-    console.log(query);
-    console.log(array);
+    // console.log(query);
+    // console.log(array);
     array.sort(function(a, b) {
         return parseFloat(a.priority) - parseFloat(b.priority);
       });
-    console.log(array);
+    // console.log(array);
 
     var condition = { $and: [ 
       { price: { $gte:minPrice } },
@@ -110,9 +110,9 @@ exports.findAll = (req, res) => {
       else sortBy[name] = 1;
     });
 
-    console.log(sortBy);
+    // console.log(condition);
+    // console.log(sortBy);
 
-    
     Rental.find(condition).sort(sortBy)
       .then(data => {
         res.send(data);

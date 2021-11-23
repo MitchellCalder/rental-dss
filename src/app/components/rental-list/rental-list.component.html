@@ -195,7 +195,7 @@
         [class.active]="i == currentIndex"
         (click)="setActiveRental(rental, i)"
       >
-        {{ rental.title }}
+        {{ '$' + rental.price + ', ' + rental.size + ' ft², ' + rental.bedrooms + ' bed, ' + rental.bathrooms + ' bath'}}
       </mat-list-item>
     </mat-list>
   
@@ -212,9 +212,9 @@
         <div class="text">
           {{ currentRental.title }}
         </div>
-        <label><strong>Description:</strong></label>
+        <label><strong>Address:</strong></label>
         <div class="text"> 
-          {{ currentRental.description }}
+          {{ currentRental.address }}
         </div>
         <div>
           <label><strong>Price:</strong></label>
@@ -225,8 +225,8 @@
           {{ currentRental.size }} ft<sup>2</sup>
         </div>
         <div>
-          <label><strong>Rooms:</strong></label>
-          {{ currentRental.rooms }}
+          <label><strong>Bedrooms:</strong></label>
+          {{ currentRental.bedrooms }}
         </div>
         <div>
           <label><strong>Bathrooms:</strong></label>
@@ -248,10 +248,12 @@
           <label><strong>Furnished:</strong></label>
           {{ currentRental.furnished }}
         </div>
+        <div>
+          <a href = "{{ currentRental.url }}">Details</a>
+        </div>
 
         <div>
           <img src="{{ currentRental.image }}" width="25%" height="25%" >
-          
         </div>
   
         <a class="badge badge-warning" routerLink="/rentals/{{ currentRental.id }}">
